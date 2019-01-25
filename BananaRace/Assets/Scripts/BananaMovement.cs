@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class BananaMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float forwardSpeed = 1;
+    public float lateralRotation = 1;
+    public float jumpForce = 1;
+    Rigidbody rb;
+
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();   
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        rb.AddRelativeTorque(transform.forward * Input.GetAxis("Vertical") * forwardSpeed * Time.deltaTime);
+        rb.AddRelativeTorque(transform.right * Input.GetAxis("Horizontal") * lateralRotation * Time.deltaTime);
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.velocity += Vector3.up * jumpForce;
+        }
     }
 }
