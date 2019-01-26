@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: a21cd08b22e397f41884dbe7214a4d7a
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a000000
+  assetHash:
+    serializedVersion: 2
+    Hash: 02c47594d967abb31301f5d217892161
+  longitude: 13.417
+  latitude: 52.533
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: -0.5174075, y: 1.3881791, z: -1.6848812}
+      lookAt: {x: 0.6554919, y: 0.14875408, z: 0.31779438}
+      up: {x: 0.2380662, y: 0.88209534, z: 0.40648788}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Component#188
+    100002: Component#188 1
+    100004: Component#188 2
+    100006: Component#188 3
+    100008: Component#188 4
+    100010: Component#188 5
+    100012: Component#188 6
+    100014: Component#188 7
+    100016: Component#189
+    100018: Component#189 1
+    100020: Component#189 2
+    100022: Component#189 3
+    100024: Component#190
+    100026: Component#190 1
+    100028: Component#190 2
+    100030: Component#190 3
+    100032: Component#190 4
+    100034: Component#190 5
+    100036: Component#190 6
+    100038: Component#190 7
+    100040: Component#191
+    100042: Component#191 1
+    100044: Component#191 2
+    100046: Component#191 3
+    100048: Component#191 4
+    100050: Component#191 5
+    100052: Component#191 6
+    100054: Component#191 7
+    100056: Component#194
+    100058: Component#194 1
+    100060: Component#195
+    100062: Component#195 1
+    100064: Component#195 2
+    100066: Component#195 3
+    100068: Group 1
+    100070: //RootNode
+    400000: Component#188
+    400002: Component#188 1
+    400004: Component#188 2
+    400006: Component#188 3
+    400008: Component#188 4
+    400010: Component#188 5
+    400012: Component#188 6
+    400014: Component#188 7
+    400016: Component#189
+    400018: Component#189 1
+    400020: Component#189 2
+    400022: Component#189 3
+    400024: Component#190
+    400026: Component#190 1
+    400028: Component#190 2
+    400030: Component#190 3
+    400032: Component#190 4
+    400034: Component#190 5
+    400036: Component#190 6
+    400038: Component#190 7
+    400040: Component#191
+    400042: Component#191 1
+    400044: Component#191 2
+    400046: Component#191 3
+    400048: Component#191 4
+    400050: Component#191 5
+    400052: Component#191 6
+    400054: Component#191 7
+    400056: Component#194
+    400058: Component#194 1
+    400060: Component#195
+    400062: Component#195 1
+    400064: Component#195 2
+    400066: Component#195 3
+    400068: Group 1
+    400070: //RootNode
+    2100000: _defaultMat
+    2100002: '[Color_001]1'
+    2100004: '[Color_009]1'
+    2300000: Component#188
+    2300002: Component#188 1
+    2300004: Component#188 2
+    2300006: Component#188 3
+    2300008: Component#188 4
+    2300010: Component#188 5
+    2300012: Component#188 6
+    2300014: Component#188 7
+    2300016: Component#189
+    2300018: Component#189 1
+    2300020: Component#189 2
+    2300022: Component#189 3
+    2300024: Component#191
+    2300026: Component#191 1
+    2300028: Component#191 2
+    2300030: Component#191 3
+    2300032: Component#191 4
+    2300034: Component#191 5
+    2300036: Component#191 6
+    2300038: Component#191 7
+    2300040: Component#194
+    2300042: Component#194 1
+    2300044: Group 1
+    3300000: Component#188
+    3300002: Component#188 1
+    3300004: Component#188 2
+    3300006: Component#188 3
+    3300008: Component#188 4
+    3300010: Component#188 5
+    3300012: Component#188 6
+    3300014: Component#188 7
+    3300016: Component#189
+    3300018: Component#189 1
+    3300020: Component#189 2
+    3300022: Component#189 3
+    3300024: Component#191
+    3300026: Component#191 1
+    3300028: Component#191 2
+    3300030: Component#191 3
+    3300032: Component#191 4
+    3300034: Component#191 5
+    3300036: Component#191 6
+    3300038: Component#191 7
+    3300040: Component#194
+    3300042: Component#194 1
+    3300044: Group 1
+    4300000: Mesh Group 1
+    4300002: Mesh Component#191
+    4300004: Mesh Component#188
+    4300006: Mesh Component#189
+    4300008: Mesh Component#194
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
