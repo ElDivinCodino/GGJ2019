@@ -1,13 +1,12 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using GamepadInput;
 
 public class BananaMovement : MonoBehaviour
 {
     public Transform rocketSx, rocketDx, rocketCentral;
     public float speed, maxForce, SpeedUpDuration, SpeedUpMultiplier;
     public ParticleSystem particleSx, particleDx;
-    public GamePad.Index playerIndex;
 
     private float originalSpeed, originalMaxForce;
     private Rigidbody rb;
@@ -33,12 +32,18 @@ public class BananaMovement : MonoBehaviour
     {
         if (rb.velocity.magnitude < maxForce)
         {
-            float mult = Mathf.Clamp(0, 200, Mathf.Abs(Vector3.Angle(transform.right, rb.velocity)) * 200 / 90);
+            //float mult = Mathf.Clamp(0, 200, Mathf.Abs(Vector3.Angle(transform.right, rb.velocity)) * 200 / 90);
 
-            float vertical = (playerIndex == GamePad.Index.One ? Input.GetAxis("Vertical_P1") : Input.GetAxis("Vertical_P2"));
-            float horizontal = playerIndex == GamePad.Index.One ? Input.GetAxis("Horizontal_P1") : Input.GetAxis("Horizontal_P2");
+            float vertical = Input.GetAxis("Vertical");
+            float horizontal = Input.GetAxis("Horizontal");
 
-            rb.AddForceAtPosition(transform.forward * vertical * speed * mult * Time.fixedDeltaTime, rocketCentral.position);
+            if (vertical < 0 && rb.velocity.magnitude > 0.1f)
+            {
+                rb.AddForceAtPosition(-transform.forward * vertical * speed / 200 * Time.fixedDeltaTime, rocketCentral.position);
+            } else if (vertical > 0)
+            {
+                rb.AddForceAtPosition(transform.forward * vertical * speed * 200 * Time.fixedDeltaTime, rocketCentral.position);
+            }
 
             if (horizontal > 0)
             {
@@ -50,12 +55,12 @@ public class BananaMovement : MonoBehaviour
             }
         }
 
-        if (GamePad.GetButtonDown(GamePad.Button.X, playerIndex) || playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.H) : Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             SpeedUp();
         }
 
-        if ((GamePad.GetButtonDown(GamePad.Button.A, playerIndex) || playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown(KeyCode.Keypad0)) && canJump)
+        if (Input.GetButtonDown("Jump") && canJump)
         {
             rb.velocity += Vector3.up * speed;
         }
