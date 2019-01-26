@@ -50,4 +50,9 @@ public class LeaderboardTestGUI : MonoBehaviour
 
         GUILayout.EndArea();
     }
+
+    public void clearLeaderboard()
+    {
+        Leaderboard.Clear();
+    }
 }
