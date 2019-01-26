@@ -788,6 +788,9 @@ MonoBehaviour:
   SpeedUpMultiplier: 0
   particleSx: {fileID: 0}
   particleDx: {fileID: 0}
+  playerIndex: 0
+  audioSourceHit: {fileID: 0}
+  audioSourceJump: {fileID: 0}
 --- !u!64 &537398898
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3310,17 +3313,17 @@ PrefabInstance:
     - target: {fileID: 5239798661776182810, guid: f69bb3ff795fe448ab5717fbec58c95f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14669251
+      value: 0.14669253
       objectReference: {fileID: 0}
     - target: {fileID: 5239798661776182810, guid: f69bb3ff795fe448ab5717fbec58c95f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.24505216
+      value: -0.24505219
       objectReference: {fileID: 0}
     - target: {fileID: 5239798661776182810, guid: f69bb3ff795fe448ab5717fbec58c95f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.037538443
+      value: 0.03753845
       objectReference: {fileID: 0}
     - target: {fileID: 5239798661776182810, guid: f69bb3ff795fe448ab5717fbec58c95f,
         type: 3}
@@ -3345,17 +3348,17 @@ PrefabInstance:
     - target: {fileID: 5239798662582647557, guid: f69bb3ff795fe448ab5717fbec58c95f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14669251
+      value: 0.14669253
       objectReference: {fileID: 0}
     - target: {fileID: 5239798662582647557, guid: f69bb3ff795fe448ab5717fbec58c95f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.24505216
+      value: -0.24505219
       objectReference: {fileID: 0}
     - target: {fileID: 5239798662582647557, guid: f69bb3ff795fe448ab5717fbec58c95f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.037538443
+      value: 0.03753845
       objectReference: {fileID: 0}
     - target: {fileID: 5239798662582647578, guid: f69bb3ff795fe448ab5717fbec58c95f,
         type: 3}

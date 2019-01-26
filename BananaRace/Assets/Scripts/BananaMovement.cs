@@ -13,27 +13,36 @@ public class BananaMovement : MonoBehaviour
 
     private float originalSpeed, originalMaxForce;
     private Rigidbody rb;
-    private bool canJump;
+    private bool canJump, canMove;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         originalSpeed = speed;
         originalMaxForce = maxForce;
-        canJump = true;
+        canJump = canMove = true;
     }
 
     void Update()
     {
-        Vector3 rot = transform.rotation.eulerAngles;
-        rot.z = 0;
+        RaycastHit hit;
 
-        transform.rotation = Quaternion.Euler(rot);
+        if (Physics.Raycast(transform.position, -Vector3.up, out hit, Mathf.Infinity))
+        {
+            if(canJump && Vector3.Distance(hit.point, transform.position) > 0.3f)
+            {
+                canJump = canMove = false;
+            } 
+            else if (!canJump && Vector3.Distance(hit.point, transform.position) < 0.3f)
+            {
+                canJump = canMove = true;
+            }
+        }
     }
 
     void FixedUpdate()
     {
-        if (rb.velocity.magnitude < maxForce)
+        if (canMove && rb.velocity.magnitude < maxForce)
         {
             float mult = Mathf.Clamp(0, 200, Mathf.Abs(Vector3.Angle(transform.right, rb.velocity)) * 200 / 90);
 
@@ -80,26 +89,6 @@ public class BananaMovement : MonoBehaviour
         particleSx.Stop();
         speed = originalSpeed;
         maxForce = originalMaxForce;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("PickUp"))
-        {
-            // Do stuff
-        }
-        else if (other.gameObject.CompareTag("Ground"))
-        {
-            canJump = true;
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            canJump = false;
-        }
     }
 
     public void OnCollisionEnter(Collision collision)
