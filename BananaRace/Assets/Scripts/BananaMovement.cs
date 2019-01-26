@@ -7,11 +7,13 @@ public class BananaMovement : MonoBehaviour
     public Transform rocketSx, rocketDx, rocketCentral;
     public float speed, maxForce;
 
+    public ParticleSystem particleSx, particleDx;
+
     Rigidbody rb;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();   
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -30,6 +32,12 @@ public class BananaMovement : MonoBehaviour
             {
                 transform.RotateAround(transform.position, Vector3.up, -40 * Time.deltaTime);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            particleDx.Play();
+            particleSx.Play();
         }
 
         if (Input.GetButtonDown("Jump"))
