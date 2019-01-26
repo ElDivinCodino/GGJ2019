@@ -20,19 +20,11 @@ public class BananaMovement : MonoBehaviour
         canJump = true;
     }
 
-    void Update()
-    {
-        Vector3 rot = transform.rotation.eulerAngles;
-        rot.z = 0;
-
-        transform.rotation = Quaternion.Euler(rot);
-    }
-
     void FixedUpdate()
     {
         if (rb.velocity.magnitude < maxForce)
         {
-            float mult = Mathf.Clamp(0, 200, Mathf.Abs(Vector3.Angle(transform.right, rb.velocity)) * 200 / 90);
+            float mult = Mathf.Abs(Vector3.Angle(transform.forward, rb.velocity)) < 90 ? 200 : 60;
             rb.AddForceAtPosition(transform.forward * Input.GetAxis("Vertical") * speed * mult * Time.fixedDeltaTime, rocketCentral.position);
 
             float horizontal = Input.GetAxis("Horizontal");
