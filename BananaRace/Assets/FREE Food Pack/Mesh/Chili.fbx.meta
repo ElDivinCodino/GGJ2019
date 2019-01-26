@@ -1,40 +1,21 @@
 fileFormatVersion: 2
-guid: e80d2b3af36eaa0449d40730413aef8b
+guid: b35c815c74fb6884f9bb74089e03072e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Group1
-    100002: Group2
-    100004: Mesh1
-    100006: Mesh2
-    100008: //RootNode
-    400000: Group1
-    400002: Group2
-    400004: Mesh1
-    400006: Mesh2
-    400008: //RootNode
-    2100000: FrontColor
-    2100002: Color_M05
-    2100004: Color_M09
-    2100006: Metal_Rough
-    2100008: Aluminum
-    2100010: Color_M07
-    2100012: Wood_Bamboo
-    2100014: Color_M01
-    2100016: Field_Rectangle_Tile
-    2300000: Mesh1
-    2300002: Mesh2
-    3300000: Mesh1
-    3300002: Mesh2
-    4300000: Mesh1
-    4300002: Mesh2
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Chili
+    9500000: //RootNode
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 0
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -60,22 +41,22 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 100
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-    indexFormat: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
@@ -84,14 +65,14 @@ ModelImporter:
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 180
+    normalImportMode: 1
     tangentImportMode: 3
-    normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -107,7 +88,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
-    skeletonHasParents: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 0
   humanoidOversampling: 1
