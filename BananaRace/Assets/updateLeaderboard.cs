@@ -16,7 +16,7 @@ public class updateLeaderboard : MonoBehaviour
     public void UpdateText()
     {
         lead = leaderboard.GetComponent<LeaderboardTestGUI>().fillLeaderboard();
-        Debug.Log(lead);
+        //Debug.Log(lead);
         this.GetComponent<Text>().text = lead;
     }
 
