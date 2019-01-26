@@ -8,6 +8,8 @@ public class BananaMovement : MonoBehaviour
     public float speed, maxForce, SpeedUpDuration, SpeedUpMultiplier;
     public ParticleSystem particleSx, particleDx;
     public GamePad.Index playerIndex;
+    public AudioSource audioSourceHit;
+    public AudioSource audioSourceJump;
 
     private float originalSpeed, originalMaxForce;
     private Rigidbody rb;
@@ -55,8 +57,9 @@ public class BananaMovement : MonoBehaviour
             SpeedUp();
         }
 
-        if ((GamePad.GetButtonDown(GamePad.Button.A, playerIndex) || playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown(KeyCode.Keypad0)) && canJump)
+        if ((GamePad.GetButtonDown(GamePad.Button.A, playerIndex) || (playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown(KeyCode.Keypad0)) && canJump))
         {
+            audioSourceJump.Play();
             rb.velocity += Vector3.up * speed;
         }
     }
@@ -97,5 +100,10 @@ public class BananaMovement : MonoBehaviour
         {
             canJump = false;
         }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        audioSourceHit.Play();
     }
 }
