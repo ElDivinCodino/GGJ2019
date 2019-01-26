@@ -31,22 +31,22 @@ public class LeaderboardTestGUI : MonoBehaviour
         _nameInput = GUILayout.TextField(_nameInput);
         _scoreInput = GUILayout.TextField(_scoreInput);
 
-        if (GUILayout.Button("Record"))
-        {
-            int score;
-            int.TryParse(_scoreInput, out score);
+        //if (GUILayout.Button("Record"))
+        //{
+        //    int score;
+        //    int.TryParse(_scoreInput, out score);
 
-            Leaderboard.Record(_nameInput, score);
+        //    Leaderboard.Record(_nameInput, score);
 
-            // Reset for next input.
-            _nameInput = "";
-            _scoreInput = "0";
-        }
+        //    // Reset for next input.
+        //    _nameInput = "";
+        //    _scoreInput = "0";
+        //}
 
-        if (GUILayout.Button("Clear"))
-        {
-            Leaderboard.Clear();
-        }
+        //if (GUILayout.Button("Clear"))
+        //{
+        //    Leaderboard.Clear();
+        //}
 
         GUILayout.EndArea();
     }
@@ -54,5 +54,17 @@ public class LeaderboardTestGUI : MonoBehaviour
     public void clearLeaderboard()
     {
         Leaderboard.Clear();
+    }
+
+    public void recordHighscore()
+    {
+        int score;
+        int.TryParse(_scoreInput, out score);
+
+        Leaderboard.Record(_nameInput, score);
+
+        // Reset for next input.
+        _nameInput = "";
+        _scoreInput = "0";
     }
 }
