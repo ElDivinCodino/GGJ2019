@@ -5,44 +5,86 @@ using UnityEngine;
 public class BananaMovement : MonoBehaviour
 {
     public Transform rocketSx, rocketDx, rocketCentral;
-    public float speed, maxForce;
-
+    public float speed, maxForce, SpeedUpDuration, SpeedUpMultiplier;
     public ParticleSystem particleSx, particleDx;
 
-    Rigidbody rb;
+    private float originalSpeed, originalMaxForce;
+    private Rigidbody rb;
+    private bool canJump;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        originalSpeed = speed;
+        originalMaxForce = maxForce;
+        canJump = true;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Mathf.Abs(rb.velocity.magnitude) < maxForce)
+        if (rb.velocity.magnitude < maxForce)
         {
-            rb.AddForceAtPosition(transform.forward * Input.GetAxis("Vertical") * speed * 200 * Time.deltaTime, rocketCentral.position);
+            float mult = Mathf.Abs(Vector3.Angle(transform.forward, rb.velocity)) < 90 ? 200 : 60;
+            rb.AddForceAtPosition(transform.forward * Input.GetAxis("Vertical") * speed * mult * Time.fixedDeltaTime, rocketCentral.position);
 
             float horizontal = Input.GetAxis("Horizontal");
 
             if (horizontal > 0)
             {
-                transform.RotateAround(transform.position, Vector3.up, 40 * Time.deltaTime);
+                transform.RotateAround(transform.position, Vector3.up, 40 * Time.fixedDeltaTime);
             }
             else if (horizontal < 0)
             {
-                transform.RotateAround(transform.position, Vector3.up, -40 * Time.deltaTime);
+                transform.RotateAround(transform.position, Vector3.up, -40 * Time.fixedDeltaTime);
             }
         }
 
         if (Input.GetKeyDown(KeyCode.H))
         {
-            particleDx.Play();
-            particleSx.Play();
+            SpeedUp();
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && canJump)
         {
             rb.velocity += Vector3.up * speed;
+        }
+    }
+
+    public void SpeedUp()
+    {
+        particleDx.Play();
+        particleSx.Play();
+        speed *= SpeedUpMultiplier;
+        maxForce *= SpeedUpMultiplier;
+        StartCoroutine(DeactivateSpeedUp(SpeedUpDuration));
+    }
+
+    IEnumerator DeactivateSpeedUp(float SpeedUpDuration)
+    {
+        yield return new WaitForSeconds(SpeedUpDuration);
+        particleDx.Stop();
+        particleSx.Stop();
+        speed = originalSpeed;
+        maxForce = originalMaxForce;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PickUp"))
+        {
+            // Do stuff
+        }
+        else if (other.gameObject.CompareTag("Ground"))
+        {
+            canJump = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            canJump = false;
         }
     }
 }
