@@ -6,16 +6,15 @@ public class PickupManager : MonoBehaviour
 {
     public float rotatingSpeed;
     public int numberOfPowerUps;
-
     Vector3 rotatingVector;
+    AudioManager audioManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         rotatingVector = new Vector3(Random.Range(15, 45), Random.Range(15, 45), Random.Range(15, 45));
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(rotatingVector * rotatingSpeed * Time.deltaTime);
@@ -26,6 +25,8 @@ public class PickupManager : MonoBehaviour
         if (other.transform.parent != null && other.transform.parent.gameObject.name.Contains("Banana"))
         {
             other.transform.parent.gameObject.GetComponent<PowerUp>().SelectPowerUp();
+            audioManager.PlayStartBeep();
+            GameObject.Destroy(gameObject);
         }
     }
 }

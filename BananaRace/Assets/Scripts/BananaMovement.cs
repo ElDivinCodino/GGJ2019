@@ -11,16 +11,18 @@ public class BananaMovement : MonoBehaviour
     public GamePad.Index playerIndex;
     public AudioSource audioSourceHit;
     public AudioSource audioSourceJump;
-
+    
     private float originalSpeed, originalMaxForce;
     private Rigidbody rb;
     private bool isJumping = false;
     TextMeshProUGUI textSpeedP1;
     TextMeshProUGUI textSpeedP2;
+    PositionManager positionManager;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();       
+        rb = GetComponent<Rigidbody>();
+        positionManager = GetComponent<PositionManager>();
         textSpeedP1 = GameObject.Find("CanvasP1").transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         textSpeedP2 = GameObject.Find("CanvasP2").transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         originalSpeed = enginePower;
@@ -68,6 +70,11 @@ public class BananaMovement : MonoBehaviour
         Vector3 rotationTorque = Vector3.up * currentRotationSpeed * Time.fixedDeltaTime;
         rb.AddTorque(rotationTorque, ForceMode.VelocityChange);   
 
+        if (GamePad.GetButtonDown(GamePad.Button.Y, playerIndex))
+        {
+            positionManager.ResetPosition();
+        }
+        
         if (!isJumping && isGrounded && GamePad.GetButtonDown(GamePad.Button.A, playerIndex)) //|| (playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown(KeyCode.Keypad0)) && canJump))
         {
             rb.velocity += Vector3.up * jumpForce;

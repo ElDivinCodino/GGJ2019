@@ -18,7 +18,6 @@ public class PowerUp : MonoBehaviour
         playerIndex = GetComponent<BananaMovement>().playerIndex;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (currentPowerUp != PowerupType.NONE && (GamePad.GetButtonDown(GamePad.Button.X, playerIndex) /*|| playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.H) : Input.GetKeyDown(KeyCode.Keypad1))*/))
@@ -30,8 +29,6 @@ public class PowerUp : MonoBehaviour
                     break;
                 case PowerupType.Shoot:
                     Shoot();
-                    break;
-                default:
                     break;
             }
 
@@ -51,15 +48,12 @@ public class PowerUp : MonoBehaviour
             case 2:
                 currentPowerUp = PowerupType.Shoot;
                 break;
-            default:
-                break;
         }
-        Debug.Log(currentPowerUp);
     }
 
     private void Shoot()
     {
-        GameObject bulletInstance = Instantiate(bullet, boccaDiFuoco.position + (boccaDiFuoco.up/0.1f), boccaDiFuoco.rotation);
+        GameObject bulletInstance = Instantiate(bullet, boccaDiFuoco.position + transform.forward, boccaDiFuoco.rotation);
         bulletInstance.GetComponent<Rigidbody>().velocity = bulletForce * boccaDiFuoco.forward;
     }
 }

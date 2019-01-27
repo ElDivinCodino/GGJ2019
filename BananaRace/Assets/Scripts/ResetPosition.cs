@@ -6,9 +6,12 @@ public class ResetPosition : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
-        if(other.transform.parent.gameObject.name.Contains("Banana"))
+        if (other.transform.parent)
         {
-            other.transform.parent.gameObject.GetComponent<PositionManager>().ResetPosition();
+            if (other.transform.parent.gameObject.GetComponent<BananaMovement>())
+            {
+                other.transform.parent.gameObject.GetComponent<PositionManager>().ResetPosition();
+            }
         }
     }
 }
