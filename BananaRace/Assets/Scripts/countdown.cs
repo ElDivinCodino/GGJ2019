@@ -9,6 +9,9 @@ public class countdown : MonoBehaviour
 
     void Start()
     {
+        //Debug.Log(GameObject.Find("counter").name);
+        //GameObject.Find("counter").gameObject.active = true;
+        GameObject.Find("counter").GetComponent<TextMeshProUGUI>().enabled = true;
         StartCoroutine(Countdown(4));
     }
 

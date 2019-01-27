@@ -23,17 +23,21 @@ public class scriptSceneManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex != 1 || SceneManager.GetActiveScene().buildIndex != 0)
         {
             StartCoroutine(this.GetComponent<AudioManager>().FadeOut(0, 1));
+            //GameObject.Find("counter").gameObject.active = true;
             this.GetComponentInChildren<countdown>().enabled = true;
             this.GetComponentInChildren<Timer>().enabled = true;
+            //GameObject.Find("counter").gameObject.active = true;
+            SceneManager.LoadScene(sceneId);
             //GameObject.Find("counter").gameObject.active = true;
         }
         else
         {
             this.GetComponentInChildren<countdown>().enabled = false;
             this.GetComponentInChildren<Timer>().enabled = false;
+            SceneManager.LoadScene(sceneId);
         }
 
-        SceneManager.LoadScene(sceneId);
+
 
 
 

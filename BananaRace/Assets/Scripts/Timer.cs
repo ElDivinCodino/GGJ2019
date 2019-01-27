@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerLabel;
     public float startTimer = 0;
 
-    private float time;
+    public float time;
 
     void Update()
     {

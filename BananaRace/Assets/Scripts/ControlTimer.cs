@@ -27,6 +27,12 @@ public class ControlTimer : MonoBehaviour
         int count = seconds;
         bool highscore = false;
 
+        Timer playerTimer = this.GetComponent<Timer>();
+        float score = playerTimer.time;
+        GameObject.Find("Leaderboard").GetComponent<LeaderboardTestGUI>().newScore = (int)Mathf.Round(score * 100);
+
+        Debug.Log(score);
+
         while (count > 0)
         {
             yield return new WaitForSeconds(1);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,14 +11,20 @@ public class GameManager : MonoBehaviour
 
         if (numGM > 1)
         {
-            GameObject obj = FindObjectsOfType<GameManager>()[0].gameObject;
-            Destroy(obj);
+            GameObject obj0 = FindObjectsOfType<GameManager>()[0].gameObject;
+            GameObject obj1 = FindObjectsOfType<GameManager>()[1].gameObject;
+            Debug.Log(obj1.GetComponentInChildren<LeaderboardTestGUI>().newScore);
+
+            obj1.GetComponentInChildren<LeaderboardTestGUI>().newScore = obj0.GetComponentInChildren<LeaderboardTestGUI>().newScore;
+
+            Destroy(obj0);
+
         }
 
         DontDestroyOnLoad(this);
 
         audioManager = GetComponent<AudioManager>();
-        GameObject.Find("counter").gameObject.active = false;
+        GameObject.Find("counter").GetComponent<TextMeshProUGUI>().enabled = false;
     }
 
     void Start()

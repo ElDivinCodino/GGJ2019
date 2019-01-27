@@ -1,10 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-//TODO: show leaderborad only if score is above current level
-
-//isHighscore = Leaderboard.CheckScore(playerScore);
  
 //if(isHighscore)
 // Do something like activate a UI input field to capture player name
@@ -14,6 +10,16 @@ public class LeaderboardTestGUI : MonoBehaviour
     private string _nameInput = "";
     private string _scoreInput = "0";
     private string text;
+    //TODO: show leaderborad only if score is above current level
+    public int newScore = 0;
+
+
+
+    //isHighscore = Leaderboard.CheckScore(playerScore);
+    public bool checkHighscore()
+    {
+        return true;
+    }
 
     public string fillLeaderboard()
     {
@@ -21,7 +27,7 @@ public class LeaderboardTestGUI : MonoBehaviour
         for (int i = 0; i < Leaderboard.EntryCount; ++i)
         {
             var entry = Leaderboard.GetEntry(i);
-            text += "Name: " + entry.name + ", Score: " + entry.score +"\n";
+            text += "Name: " + entry.name + entry.score +"\n";
         }
 
         return text;
@@ -30,7 +36,7 @@ public class LeaderboardTestGUI : MonoBehaviour
     public void insertName(string playerName)
     {
         _nameInput = playerName;
-        _scoreInput = 1000.ToString(); //TODO: insert score here dynamically
+        _scoreInput = newScore.ToString(); //TODO: insert score here dynamically
     }
 
     public void clearLeaderboard()
