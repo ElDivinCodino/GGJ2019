@@ -13,9 +13,11 @@ public class GameManager : MonoBehaviour
         {
             GameObject obj0 = FindObjectsOfType<GameManager>()[0].gameObject;
             GameObject obj1 = FindObjectsOfType<GameManager>()[1].gameObject;
+            Debug.Log(obj0.GetComponentInChildren<LeaderboardTestGUI>().newScore);
             Debug.Log(obj1.GetComponentInChildren<LeaderboardTestGUI>().newScore);
 
             obj1.GetComponentInChildren<LeaderboardTestGUI>().newScore = obj0.GetComponentInChildren<LeaderboardTestGUI>().newScore;
+            Debug.Log(obj1.GetComponentInChildren<LeaderboardTestGUI>().newScore);
 
             Destroy(obj0);
 

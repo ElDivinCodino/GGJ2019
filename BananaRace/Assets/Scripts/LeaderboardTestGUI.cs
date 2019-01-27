@@ -37,6 +37,7 @@ public class LeaderboardTestGUI : MonoBehaviour
     {
         _nameInput = playerName;
         _scoreInput = newScore.ToString(); //TODO: insert score here dynamically
+        recordHighscore();
     }
 
     public void clearLeaderboard()
@@ -46,8 +47,10 @@ public class LeaderboardTestGUI : MonoBehaviour
 
     public void recordHighscore()
     {
-        int score;
-        int.TryParse(_scoreInput, out score);
+        int score = newScore;
+        Debug.Log(newScore);
+        Debug.Log(_nameInput);
+        //int.TryParse(_scoreInput, out score);
 
         Leaderboard.Record(_nameInput, score);
 
