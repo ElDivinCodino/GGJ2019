@@ -3747,7 +3747,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: One player
+  m_Text: (dev)
 --- !u!222 &1600838404
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4890,16 +4890,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3460587697973616081, guid: 3d45e67743deb4c42a0616bb8a58f129,
         type: 3}
       propertyPath: m_Name
@@ -4959,6 +4949,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_margin.x
+      value: -157.41302
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_margin.w
+      value: -68.28299
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -35.589355
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_margin.y
+      value: -51.093933
+      objectReference: {fileID: 0}
+    - target: {fileID: 6704156751992115491, guid: 3d45e67743deb4c42a0616bb8a58f129,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 514
       objectReference: {fileID: 0}
     - target: {fileID: 1900251477459882635, guid: 3d45e67743deb4c42a0616bb8a58f129,
         type: 3}
