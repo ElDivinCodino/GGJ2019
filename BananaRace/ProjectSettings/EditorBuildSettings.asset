@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LeaderboardScene.unity
     guid: 2e58eb7dfd3e24672b68413de0b3acd1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FruitsLife.unity
     guid: 8ada7df06534eee48aff5aeed0eac608
+  - enabled: 1
+    path: Assets/Scenes/FruitsLife_texturing.unity
+    guid: 4396ce16ada4442469d6f4731876fd88
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 97b86ed4bbb0835458bb7adb96eb82f3,
       type: 2}
