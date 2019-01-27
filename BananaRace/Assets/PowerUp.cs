@@ -5,12 +5,13 @@ using GamepadInput;
 
 public class PowerUp : MonoBehaviour
 {
+    enum PowerupType { NONE, SpeedUp, Shoot }
     public GameObject bullet;
     public Transform boccaDiFuoco;
     public float bulletForce;
 
     GamePad.Index playerIndex;
-    string currentPowerUp = "";
+    PowerupType currentPowerUp = PowerupType.NONE;
 
     void Start()
     {
@@ -20,21 +21,21 @@ public class PowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentPowerUp != "" && GamePad.GetButtonDown(GamePad.Button.X, playerIndex) || playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.H) : Input.GetKeyDown(KeyCode.Keypad1))
-        {
-            switch (currentPowerUp)
+        if (currentPowerUp != PowerupType.NONE && (GamePad.GetButtonDown(GamePad.Button.X, playerIndex) /*|| playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.H) : Input.GetKeyDown(KeyCode.Keypad1))*/))
+        { 
+            switch(currentPowerUp)
             {
-                case "SpeedUp":
+                case PowerupType.SpeedUp:            
                     GetComponent<BananaMovement>().SpeedUp();
                     break;
-                case "Shoot":
+                case PowerupType.Shoot:
                     Shoot();
                     break;
                 default:
                     break;
             }
 
-            currentPowerUp = "";
+            currentPowerUp = PowerupType.NONE;
         }
     }
 
@@ -45,21 +46,20 @@ public class PowerUp : MonoBehaviour
         switch (num)
         {
             case 1:
-                currentPowerUp = "SpeedUp";
+                currentPowerUp = PowerupType.SpeedUp;
                 break;
             case 2:
-                currentPowerUp = "Shoot";
+                currentPowerUp = PowerupType.Shoot;
                 break;
             default:
                 break;
         }
-
+        Debug.Log(currentPowerUp);
     }
 
     private void Shoot()
     {
-        GameObject bulletInstance = Instantiate(bullet, boccaDiFuoco.position, boccaDiFuoco.rotation);
-
-        bulletInstance.GetComponent<Rigidbody>().velocity = bulletForce * boccaDiFuoco.forward; ;
+        GameObject bulletInstance = Instantiate(bullet, boccaDiFuoco.position + (boccaDiFuoco.up/0.1f), boccaDiFuoco.rotation);
+        bulletInstance.GetComponent<Rigidbody>().velocity = bulletForce * boccaDiFuoco.forward;
     }
 }

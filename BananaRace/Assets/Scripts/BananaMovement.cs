@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using GamepadInput;
+using TMPro;
 
 public class BananaMovement : MonoBehaviour
 {
     public Transform rocketSx, rocketDx, rocketCentral;
-    public float speed, maxForce, SpeedUpDuration, SpeedUpMultiplier;
+    public float enginePower, maxSpeed, SpeedUpDuration, SpeedUpMultiplier, rotationSpeed, jumpForce;
     public ParticleSystem particleSx, particleDx;
     public GamePad.Index playerIndex;
     public AudioSource audioSourceHit;
@@ -13,73 +14,76 @@ public class BananaMovement : MonoBehaviour
 
     private float originalSpeed, originalMaxForce;
     private Rigidbody rb;
-    private bool canJump, canMove;
+    private bool isJumping = false;
+    TextMeshProUGUI textSpeedP1;
+    TextMeshProUGUI textSpeedP2;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        originalSpeed = speed;
-        originalMaxForce = maxForce;
-        canJump = canMove = true;
-    }
-
-    void Update()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, -Vector3.up, out hit, Mathf.Infinity))
-        {
-            if(canJump && Vector3.Distance(hit.point, transform.position) > 0.3f)
-            {
-                canJump = canMove = false;
-            } 
-            else if (!canJump && Vector3.Distance(hit.point, transform.position) < 0.3f)
-            {
-                canJump = canMove = true;
-            }
-        }
+        rb = GetComponent<Rigidbody>();       
+        textSpeedP1 = GameObject.Find("CanvasP1").transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        textSpeedP2 = GameObject.Find("CanvasP2").transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        originalSpeed = enginePower;
+        originalMaxForce = maxSpeed;
     }
 
     void FixedUpdate()
     {
-        if (canMove && rb.velocity.magnitude < maxForce)
+        int currentSpeed = Mathf.FloorToInt(rb.velocity.magnitude);
+
+        if (playerIndex == GamePad.Index.One)
         {
-            if (Mathf.Abs(Vector3.Angle(transform.forward, rb.velocity)) < 90)
-            {
-                float vertical = (playerIndex == GamePad.Index.One ? Input.GetAxis("Vertical_P1") : Input.GetAxis("Vertical_P2"));
-                rb.AddForceAtPosition(transform.forward * vertical * speed * 200 * Time.fixedDeltaTime, rocketCentral.position);
-            }
-
-            float horizontal = playerIndex == GamePad.Index.One ? Input.GetAxis("Horizontal_P1") : Input.GetAxis("Horizontal_P2");
-
-            if (horizontal > 0)
-            {
-                transform.RotateAround(transform.position, Vector3.up, 40 * Time.fixedDeltaTime);
-            }
-            else if (horizontal < 0)
-            {
-                transform.RotateAround(transform.position, Vector3.up, -40 * Time.fixedDeltaTime);
-            }
+            textSpeedP1.text = Mathf.RoundToInt(rb.velocity.magnitude * 10).ToString() + " Km/h";          
+        }
+        else
+        {
+            textSpeedP2.text = Mathf.RoundToInt(rb.velocity.magnitude * 10).ToString() + " Km/h";
         }
 
-        if (GamePad.GetButtonDown(GamePad.Button.X, playerIndex) || playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.H) : Input.GetKeyDown(KeyCode.Keypad1))
+        Vector3 currentRotation = transform.rotation.eulerAngles;
+        currentRotation.z = 0;
+        transform.rotation = Quaternion.Euler(currentRotation);
+
+        RaycastHit hit;
+        bool isGrounded = Physics.Raycast(transform.position, -Vector3.up, out hit, 0.25f);
+                
+        if (isGrounded && currentSpeed < maxSpeed)
         {
-            SpeedUp();
+            float vertical = vertical = playerIndex == GamePad.Index.One ? -Input.GetAxis("Vertical_P1") : -Input.GetAxis("Vertical_P2");
+
+            if (vertical < 0)
+            {
+                vertical /= 2;
+            }
+
+            rb.AddForceAtPosition(transform.forward * vertical * enginePower * 200 * Time.fixedDeltaTime, rocketCentral.position, ForceMode.Acceleration);
         }
 
-        if ((GamePad.GetButtonDown(GamePad.Button.A, playerIndex) || (playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown(KeyCode.Keypad0)) && canJump))
+        if (isJumping && isGrounded) { isJumping = false; }
+
+        float horizontal = playerIndex == GamePad.Index.One ? Input.GetAxis("Horizontal_P1") : Input.GetAxis("Horizontal_P2");
+        float currentRotationSpeed = rotationSpeed * horizontal;
+        float finalRotation = currentRotationSpeed * (1 - (currentSpeed / maxSpeed));
+
+        Vector3 rotationTorque = Vector3.up * currentRotationSpeed * Time.fixedDeltaTime;
+        rb.AddTorque(rotationTorque, ForceMode.VelocityChange);   
+
+        if (!isJumping && isGrounded && GamePad.GetButtonDown(GamePad.Button.A, playerIndex)) //|| (playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown(KeyCode.Keypad0)) && canJump))
         {
+            rb.velocity += Vector3.up * jumpForce;
             audioSourceJump.Play();
-            rb.velocity += Vector3.up * (speed / 10);
+            isJumping = true;
         }
     }
 
     public void SpeedUp()
     {
+        Debug.Log("SPEED UPPP!!!");
+
         particleDx.Play();
         particleSx.Play();
-        speed *= SpeedUpMultiplier;
-        maxForce *= SpeedUpMultiplier;
+        enginePower *= SpeedUpMultiplier;
+        maxSpeed *= SpeedUpMultiplier;
         StartCoroutine(DeactivateSpeedUp(SpeedUpDuration));
     }
 
@@ -88,8 +92,8 @@ public class BananaMovement : MonoBehaviour
         yield return new WaitForSeconds(SpeedUpDuration);
         particleDx.Stop();
         particleSx.Stop();
-        speed = originalSpeed;
-        maxForce = originalMaxForce;
+        enginePower = originalSpeed;
+        maxSpeed = originalMaxForce;
     }
 
     public void OnCollisionEnter(Collision collision)

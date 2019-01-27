@@ -18909,6 +18909,8 @@ GameObject:
   - component: {fileID: 7077001108576143258}
   - component: {fileID: 1839971297}
   - component: {fileID: 5611332138474564106}
+  - component: {fileID: 1759302270280496825}
+  - component: {fileID: 569414605676219978}
   m_Layer: 0
   m_Name: BananaP2
   m_TagString: Untagged
@@ -18966,10 +18968,12 @@ MonoBehaviour:
   rocketSx: {fileID: 1989564985}
   rocketDx: {fileID: 1131256541}
   rocketCentral: {fileID: 882182277}
-  speed: 20
-  maxForce: 20
+  enginePower: 0
+  maxSpeed: 0
   SpeedUpDuration: 5
   SpeedUpMultiplier: 1.3
+  rotationSpeed: 0
+  jumpForce: 0
   particleSx: {fileID: 207615600}
   particleDx: {fileID: 1784041090}
   playerIndex: 2
@@ -19167,6 +19171,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1759302270280496825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839971295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d597f534ca7f4648abfaa001193b4e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 1000010466361374, guid: d2d64516188754577961550031d66ec0, type: 3}
+  boccaDiFuoco: {fileID: 0}
+  bulletForce: 50
+--- !u!114 &569414605676219978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839971295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b5948de8d064c688159051ae5c4a78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1989564984
 GameObject:
   m_ObjectHideFlags: 0
