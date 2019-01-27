@@ -44,12 +44,13 @@ public class BananaMovement : MonoBehaviour
     {
         if (canMove && rb.velocity.magnitude < maxForce)
         {
-            float mult = Mathf.Clamp(0, 200, Mathf.Abs(Vector3.Angle(transform.right, rb.velocity)) * 200 / 90);
+            if (Mathf.Abs(Vector3.Angle(transform.forward, rb.velocity)) < 90)
+            {
+                float vertical = (playerIndex == GamePad.Index.One ? Input.GetAxis("Vertical_P1") : Input.GetAxis("Vertical_P2"));
+                rb.AddForceAtPosition(transform.forward * vertical * speed * 200 * Time.fixedDeltaTime, rocketCentral.position);
+            }
 
-            float vertical = (playerIndex == GamePad.Index.One ? Input.GetAxis("Vertical_P1") : Input.GetAxis("Vertical_P2"));
             float horizontal = playerIndex == GamePad.Index.One ? Input.GetAxis("Horizontal_P1") : Input.GetAxis("Horizontal_P2");
-
-            rb.AddForceAtPosition(transform.forward * vertical * speed * mult * Time.fixedDeltaTime, rocketCentral.position);
 
             if (horizontal > 0)
             {
@@ -69,7 +70,7 @@ public class BananaMovement : MonoBehaviour
         if ((GamePad.GetButtonDown(GamePad.Button.A, playerIndex) || (playerIndex == GamePad.Index.One ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown(KeyCode.Keypad0)) && canJump))
         {
             audioSourceJump.Play();
-            rb.velocity += Vector3.up * speed;
+            rb.velocity += Vector3.up * (speed / 10);
         }
     }
 
