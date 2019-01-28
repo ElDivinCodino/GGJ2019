@@ -85,8 +85,6 @@ public class BananaMovement : MonoBehaviour
 
     public void SpeedUp()
     {
-        Debug.Log("SPEED UPPP!!!");
-
         particleDx.Play();
         particleSx.Play();
         enginePower *= SpeedUpMultiplier;
